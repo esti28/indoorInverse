@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: {}-deployment
+  name: nityaagarwal-deployment
   namespace: mc-lab
   labels:
-    user: {}
+    user: nityaagarwal
 
 spec:
   replicas: 1
@@ -17,36 +17,36 @@ spec:
       labels:
         k8s-app: nginx
     spec:
-      # nodeSelector:
-      #   kubernetes.io/hostname: k8s-haosu-10.sdsc.optiputer.net
+       #nodeSelector:
+        # kubernetes.io/hostname: k8s-haosu-10.sdsc.optiputer.net
       containers:
       - name: container
         image: jerrypiglet/rui_conda_inverse:public
         args: ["sleep", "infinity"]
         resources:  
           requests:
-            cpu: "100"
-            memory: "2Gi"
-            # nvidia.com/gpu: 1
+            cpu: "25" # "100"
+            memory: "40Gi" #"2Gi"
+            nvidia.com/gpu: 2
           limits:
-            cpu: "16"
-            memory: "16Gi"
-            # nvidia.com/gpu: 1
+            cpu: "45" #"16" 
+            memory: "70Gi" #"16Gi"
+            nvidia.com/gpu: 2
         volumeMounts:
         - name: dshm
           mountPath: /dev/shm
         - name: openroomsindept
           mountPath: /openroomsindept
-        - name: {}data
-          mountPath: /{}data
+        - name: nityaagarwaldata
+          mountPath: /nityaagarwaldata
 
       volumes:
-      - name: {}data
+      - name: nityaagarwaldata
         persistentVolumeClaim:
-            claimName: {}data
-      - name: openroomsindeptpread
+            claimName: nityaagarwaldata
+      - name: openroomsindept
         persistentVolumeClaim:
-            claimName: openroomsindept 
+            claimName: openroomsindept
       - name: dshm
         emptyDir:
           medium: Memory
