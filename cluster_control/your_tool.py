@@ -53,12 +53,12 @@ def parse_args():
     create_parser.add_argument('-d', '--deploy', action='store_true', help='deploy the code')
     create_parser.add_argument('-z', '--zip', action='store_true', help='deploy the code', default=True)
     create_parser.add_argument('--resume', type=str, help='resume_from: e.g. 20201129-232627', default='NoCkpt')
-    create_parser.add_argument('--deploy_src', type=str, help='deploy to target path', default='~/Documents/Projects/indoorInverse/train/')
+    create_parser.add_argument('--deploy_src', type=str, help='deploy to target path', default='/Users/nta/Desktop/ERSP/indoorInverse/train') #~/Documents/Projects/indoorInverse/train/
     # create_parser.add_argument('--deploy_s3', type=str, help='deploy s3 container', default='s3mm1:train/train')
-    create_parser.add_argument('--deploy_tar', type=str, help='deploy to target path', default='/ruidata/indoorInverse/job_list')
-    create_parser.add_argument('--deploy_train_path', type=str, help='deploy to target path', default='/ruidata/indoorInverse/train')
-    create_parser.add_argument('--python_path', type=str, help='python path in pod', default='/ruidata/envs/py38/bin/python')
-    create_parser.add_argument('--pip_path', type=str, help='python path in pod', default='/ruidata/envs/py38/bin/pip')
+    create_parser.add_argument('--deploy_tar', type=str, help='deploy to target path', default='/nityaagarwaldata/indoorInverse/job_list')
+    create_parser.add_argument('--deploy_train_path', type=str, help='deploy to target path', default='/nityaagarwaldata/indoorInverse/train')
+    create_parser.add_argument('--python_path', type=str, help='python path in pod', default='/nityaagarwaldata/envs/py38/bin/python')
+    create_parser.add_argument('--pip_path', type=str, help='python path in pod', default='/nityaagarwaldata/envs/py38/bin/pip')
     create_parser.add_argument('--gpus', type=int, help='nubmer of GPUs', default=2)  
     create_parser.add_argument('--cpur', type=int, help='request of CPUs', default=10)
     create_parser.add_argument('--cpul', type=int, help='limit of CPUs', default=30)
@@ -113,7 +113,7 @@ def get_datetime():
 def load_yaml(yaml_path):
     with open(yaml_path, 'r') as stream:
         try:
-            loaded = yaml.load(stream)
+            loaded = yaml.safe_load(stream) #yaml.load(stream)
         except yaml.YAMLError as exc:
             print(exc)
     return loaded
