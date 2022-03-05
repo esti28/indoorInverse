@@ -25,17 +25,17 @@ spec:
         args: ["sleep", "infinity"]
         resources:  
           requests:
-            cpu: "25" # "100"
-            memory: "40Gi" #"2Gi"
-            nvidia.com/gpu: 2
+            cpu: "15" # "100"
+            memory: "20Gi" #"2Gi"
+            nvidia.com/gpu: 1
           limits:
-            cpu: "45" #"16" 
-            memory: "70Gi" #"16Gi"
-            nvidia.com/gpu: 2
+            cpu: "30" #"16" 
+            memory: "50Gi" #"16Gi"
+            nvidia.com/gpu: 1
         volumeMounts:
         - name: dshm
           mountPath: /dev/shm
-        - name: openroomsindept
+        - name: openroomsindepthaosu
           mountPath: /openroomsindept
         - name: nityaagarwaldata
           mountPath: /nityaagarwaldata
@@ -44,9 +44,9 @@ spec:
       - name: nityaagarwaldata
         persistentVolumeClaim:
             claimName: nityaagarwaldata
-      - name: openroomsindept
+      - name: openroomsindepthaosu
         persistentVolumeClaim:
-            claimName: openroomsindept
+            claimName: openroomsindepthaosu
       - name: dshm
         emptyDir:
           medium: Memory

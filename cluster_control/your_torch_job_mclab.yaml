@@ -35,16 +35,16 @@ spec:
             mountPath: /dev/shm 
           - name: nityaagarwaldata
             mountPath: /nityaagarwaldata
-          - name: openroomsindept
+          - name: openroomsindepthaosu
             mountPath: /openroomsindept
 
       volumes:
       - name: dshm  # shared memory
         emptyDir:
           medium: Memory
-      - name: openroomsindept
+      - name: openroomsindepthaosu
         persistentVolumeClaim:
-            claimName: openroomsindept 
+            claimName: openroomsindepthaosu 
       - name: nityaagarwaldata
         persistentVolumeClaim:
             claimName: nityaagarwaldata

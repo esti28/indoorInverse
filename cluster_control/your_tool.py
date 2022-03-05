@@ -113,7 +113,7 @@ def get_datetime():
 def load_yaml(yaml_path):
     with open(yaml_path, 'r') as stream:
         try:
-            loaded = yaml.safe_load(stream) #yaml.load(stream)
+            loaded = yaml.load(stream)
         except yaml.YAMLError as exc:
             print(exc)
     return loaded
