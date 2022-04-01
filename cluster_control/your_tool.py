@@ -53,7 +53,7 @@ def parse_args():
     create_parser.add_argument('-d', '--deploy', action='store_true', help='deploy the code')
     create_parser.add_argument('-z', '--zip', action='store_true', help='deploy the code', default=True)
     create_parser.add_argument('--resume', type=str, help='resume_from: e.g. 20201129-232627', default='NoCkpt')
-    create_parser.add_argument('--deploy_src', type=str, help='deploy to target path', default='/Users/nta/Desktop/ERSP/indoorInverse/train') #~/Documents/Projects/indoorInverse/train/
+    create_parser.add_argument('--deploy_src', type=str, help='deploy to target path', default='/Users/nta/Documents/Undergraduate/ERSP/indoorInverse/train') #~/Documents/Projects/indoorInverse/train/
     # create_parser.add_argument('--deploy_s3', type=str, help='deploy s3 container', default='s3mm1:train/train')
     create_parser.add_argument('--deploy_tar', type=str, help='deploy to target path', default='/nityaagarwaldata/indoorInverse/job_list')
     create_parser.add_argument('--deploy_train_path', type=str, help='deploy to target path', default='/nityaagarwaldata/indoorInverse/train')

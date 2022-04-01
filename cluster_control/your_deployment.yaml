@@ -25,13 +25,13 @@ spec:
         args: ["sleep", "infinity"]
         resources:  
           requests:
-            cpu: "15" # "100"
-            memory: "20Gi" #"2Gi"
-            nvidia.com/gpu: 1
+            cpu: "15" #"15" # "100"
+            memory: "1Gi" #"20Gi" #"2Gi"
+            nvidia.com/gpu: 0
           limits:
-            cpu: "30" #"16" 
-            memory: "50Gi" #"16Gi"
-            nvidia.com/gpu: 1
+            cpu: "20" #"30" #"16" 
+            memory: "3Gi" #"50Gi" #"16Gi"
+            nvidia.com/gpu: 0
         volumeMounts:
         - name: dshm
           mountPath: /dev/shm
