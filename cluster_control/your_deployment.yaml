@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: {}-deployment
+  name: nityaagarwal-deployment
   namespace: mc-lab
   labels:
-    user: {}
+    user: nityaagarwal
 
 spec:
   replicas: 1
@@ -37,13 +37,13 @@ spec:
           mountPath: /dev/shm
         - name: openroomsindepthaosu
           mountPath: /openroomsindept
-        - name: {}data
-          mountPath: /{}data
+        - name: nityaagarwaldata
+          mountPath: /nityaagarwaldata
 
       volumes:
-      - name: {}data
+      - name: nityaagarwaldata
         persistentVolumeClaim:
-            claimName: {}data
+            claimName: nityaagarwaldata
       - name: openroomsindepthaosu
         persistentVolumeClaim:
             claimName: openroomsindepthaosu 
