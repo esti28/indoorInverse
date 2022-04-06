@@ -33,10 +33,14 @@ spec:
         volumeMounts:
           - name: dshm
             mountPath: /dev/shm 
+
           - name: nityaagarwaldata
             mountPath: /nityaagarwaldata
+
           - name: openroomsindepthaosu
             mountPath: /openroomsindept
+          - name: ruidatamclab
+            mountPath: /ruidata
 
       volumes:
       - name: dshm  # shared memory
@@ -46,6 +50,7 @@ spec:
         persistentVolumeClaim:
             claimName: openroomsindepthaosu 
       - name: nityaagarwaldata
+
         persistentVolumeClaim:
             claimName: nityaagarwaldata
       restartPolicy: Never
@@ -62,10 +67,12 @@ spec:
               #   operator: NotIn
               #   values:
               #   - k8s-haosu-01.sdsc.optiputer.net
-            #  - key: gpu-type
-            #    operator: In
-            #    values:
-                # - 1080Ti
-            #    - 2080Ti
-                # - TITANRTX
+
+              # - key: gpu-type
+              #   operator: In
+              #   values:
+              #   # - 1080Ti
+              #   - 2080Ti
+              #   # - TITANRTX
+
   backoffLimit: 2

@@ -47,6 +47,7 @@ spec:
       - name: openroomsindepthaosu
         persistentVolumeClaim:
             claimName: openroomsindepthaosu
+
       - name: dshm
         emptyDir:
           medium: Memory

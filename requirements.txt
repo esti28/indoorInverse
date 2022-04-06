@@ -11,7 +11,7 @@ tensorboard
 torchsummary
 statistics
 tables
-pyyaml
+pyyaml==5.4.1
 yacs
 pathlib
 termcolor
@@ -31,3 +31,4 @@ timm
 iopath
 ipympl
 jupyterlab
+PyGEL3D

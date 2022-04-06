@@ -118,7 +118,7 @@ class openrooms(data.Dataset):
             seg_path = self.mask_root / (meta_split.replace('DiffMat', '')) / scene_name / ('immask_%d.png'%frame_id)
             # seg_path = hdr_image_path.replace('im_', 'immask_').replace('hdr', 'png').replace('DiffMat', '')
             # Read segmentation
-            seg = 0.5 * (self.loadImage(seg_path ) + 1)[0:1, :, :]
+            seg = 0.5 * (self.loadImage(str(seg_path) ) + 1)[0:1, :, :]
             # semantics_path = hdr_image_path.replace('DiffMat', '').replace('DiffLight', '')
             # mask_path = semantics_path.replace('im_', 'imcadmatobj_').replace('hdr', 'dat')
             mask_path = self.cadmatobj_root / (meta_split.replace('DiffMat', '').replace('DiffLight', '')) / scene_name / ('imcadmatobj_%d.dat'%frame_id)
