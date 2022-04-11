@@ -9,6 +9,8 @@ import torch.nn.functional as F
 import models_def.models_brdf as models_brdf # basic model
 import models_def.models_light as models_light 
 
+import models_def.mobilenet_models as MobileNetV3_SmallClass
+
 from icecream import ic
 
 import models_def.BilateralLayer as bs
@@ -26,11 +28,13 @@ class Model_Joint(nn.Module):
         if self.cfg.MODEL_BRDF.enable:
             in_channels = 3
 
-            self.encoder_to_use = models_brdf.encoder0
+            #self.encoder_to_use = models_brdf.encoder0
+            self.encoder_to_use = MobileNetV3_SmallClass.MobileNetV3_Small
             self.decoder_to_use = models_brdf.decoder0
 
             self.BRDF_Net = nn.ModuleDict({
-                    'encoder': self.encoder_to_use(opt, cascadeLevel = self.opt.cascadeLevel, in_channels = in_channels)
+                    #'encoder': self.encoder_to_use(opt, cascadeLevel = self.opt.cascadeLevel, in_channels = in_channels)
+                    'encoder': self.encoder_to_use()
                     })
 
             if self.cfg.MODEL_BRDF.enable_BRDF_decoders:
@@ -140,7 +144,8 @@ class Model_Joint(nn.Module):
         input_list = [input_dict['input_batch_brdf']]
 
         input_tensor = torch.cat(input_list, 1)
-        x1, x2, x3, x4, x5, x6, extra_output_dict = self.BRDF_Net['encoder'](input_tensor, input_dict_extra=input_dict_extra)
+        #x1, x2, x3, x4, x5, x6, extra_output_dict = self.BRDF_Net['encoder'](input_tensor, input_dict_extra=input_dict_extra)
+        x1, x2, x3 = self.BRDF_Net['encoder'](input_tensor)
 
         return_dict = {'encoder_outputs': {'x1': x1, 'x2': x2, 'x3': x3, 'x4': x4, 'x5': x5, 'x6': x6, 'brdf_extra_output_dict': extra_output_dict}}
         albedo_output = {}
